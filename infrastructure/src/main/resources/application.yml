@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: development
+
+server:
+  port: 8080
+  compression:
+    enabled: true # Se a compressão de resposta está habilitada.
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json # Lista separada por vírgulas de tipos MIME que devem ser compactados.
+    min-response-size: 1024 # Valor mínimo de "Content-Length" necessário para que a compactação seja executada.
+  undertow:
+    threads:
+      worker: 64 # Geralmente, isso deve ser razoavelmente alto, pelo menos 10 por núcleo de CPU: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
+      io: 4 # Um thread de E/S por núcleo de CPU é um padrão razoável: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
