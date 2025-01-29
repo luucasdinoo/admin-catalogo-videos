@@ -5,8 +5,6 @@ import com.dino.admin.catalogo.domain.validation.handler.ThrowsValidationHandler
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.time.Instant;
-
 public class CategoryTest {
 
     @Test

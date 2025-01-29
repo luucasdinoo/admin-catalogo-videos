@@ -2,7 +2,7 @@ package com.dino.admin.catalogo.application.category.create;
 
 import com.dino.admin.catalogo.application.UseCaseTest;
 import com.dino.admin.catalogo.domain.category.CategoryGateway;
-import com.dino.admin.catalogo.domain.exceptions.DomainException;
+import com.dino.admin.catalogo.domain.validation.handler.Notification;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,9 +14,7 @@ import java.util.Objects;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 public class CreateCategoryUseCaseTest extends UseCaseTest {
 
@@ -43,7 +41,7 @@ public class CreateCategoryUseCaseTest extends UseCaseTest {
         when(categoryGateway.create(any()))
                 .thenAnswer(returnsFirstArg());
 
-        final CreateCategoryResponse actualResponse = useCase.execute(aRequest);
+        final CreateCategoryResponse actualResponse = useCase.execute(aRequest).get();
 
         Assertions.assertNotNull(actualResponse);
         Assertions.assertNotNull(actualResponse.id());
@@ -70,9 +68,10 @@ public class CreateCategoryUseCaseTest extends UseCaseTest {
         final var aRequest =
                 CreateCategoryRequest.with(expectedName, expectedDescription, expectedIsActive);
 
-        final var actualException = Assertions.assertThrows(DomainException.class, () -> useCase.execute(aRequest));
+        Notification notification = useCase.execute(aRequest).getLeft();
 
-        Assertions.assertEquals(expectedErrorMessage, actualException.getMessage());
+        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, notification.firstError().message());
 
         verify(categoryGateway, times(0)).create(any());
     }
@@ -89,7 +88,7 @@ public class CreateCategoryUseCaseTest extends UseCaseTest {
         when(categoryGateway.create(any()))
                 .thenAnswer(returnsFirstArg());
 
-        final CreateCategoryResponse actualResponse = useCase.execute(aRequest);
+        final CreateCategoryResponse actualResponse = useCase.execute(aRequest).get();
 
         Assertions.assertNotNull(actualResponse);
         Assertions.assertNotNull(actualResponse.id());
@@ -119,9 +118,10 @@ public class CreateCategoryUseCaseTest extends UseCaseTest {
         when(categoryGateway.create(any()))
                 .thenThrow(new IllegalStateException(expectedErrorMessage));
 
-        final var actualException = Assertions.assertThrows(IllegalStateException.class, () -> useCase.execute(aRequest));
+        Notification notification = useCase.execute(aRequest).getLeft();
 
-        Assertions.assertEquals(expectedErrorMessage, actualException.getMessage());
+        Assertions.assertEquals(expectedErrorCount, notification.getErrors().size());
+        Assertions.assertEquals(expectedErrorMessage, notification.firstError().message());
 
         verify(categoryGateway, times(1)).create(argThat(aCategory ->
                 Objects.equals(expectedName, aCategory.getName())
