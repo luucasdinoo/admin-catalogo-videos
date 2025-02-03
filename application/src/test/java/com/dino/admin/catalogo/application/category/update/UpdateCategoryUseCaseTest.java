@@ -213,4 +213,5 @@ public class UpdateCategoryUseCaseTest extends UseCaseTest {
 
         Mockito.verify(categoryGateway, times(0)).update(any());
     }
+    
 }
