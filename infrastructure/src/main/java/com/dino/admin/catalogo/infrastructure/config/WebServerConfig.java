@@ -4,6 +4,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.dino.admin.catalogo")
+@ComponentScan(basePackages = "com.dino.admin.catalogo")
 public class WebServerConfig {
 }

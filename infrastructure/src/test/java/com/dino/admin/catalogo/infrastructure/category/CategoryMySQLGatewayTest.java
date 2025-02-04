@@ -1,9 +1,9 @@
 package com.dino.admin.catalogo.infrastructure.category;
 
+import com.dino.admin.catalogo.MySQLGatewayTest;
 import com.dino.admin.catalogo.domain.category.Category;
 import com.dino.admin.catalogo.domain.category.CategoryId;
 import com.dino.admin.catalogo.domain.category.CategorySearchQuery;
-import com.dino.admin.catalogo.infrastructure.MySQLGatewayTest;
 import com.dino.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import com.dino.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import org.junit.jupiter.api.Assertions;

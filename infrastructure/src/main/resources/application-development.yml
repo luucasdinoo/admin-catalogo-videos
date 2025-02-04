@@ -5,7 +5,6 @@ mysql:
   url: localhost:3306
 
 server:
-  port: 8081
   undertow:
     threads:
       worker: 10

@@ -1,13 +1,16 @@
 package com.dino.admin.catalogo.application.category.create;
 
 import com.dino.admin.catalogo.domain.category.Category;
-import com.dino.admin.catalogo.domain.category.CategoryId;
 
 public record CreateCategoryResponse(
-        CategoryId id
+        String id
 ) {
 
+    public static CreateCategoryResponse from(final String anId) {
+        return new CreateCategoryResponse(anId);
+    }
+
     public static CreateCategoryResponse from(final Category aCategory) {
-        return new CreateCategoryResponse(aCategory.getId());
+        return new CreateCategoryResponse(aCategory.getId().getValue());
     }
 }

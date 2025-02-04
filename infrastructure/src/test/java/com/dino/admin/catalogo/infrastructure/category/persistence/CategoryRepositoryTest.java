@@ -1,7 +1,7 @@
 package com.dino.admin.catalogo.infrastructure.category.persistence;
 
+import com.dino.admin.catalogo.MySQLGatewayTest;
 import com.dino.admin.catalogo.domain.category.Category;
-import com.dino.admin.catalogo.infrastructure.MySQLGatewayTest;
 import org.hibernate.PropertyValueException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

@@ -12,8 +12,8 @@ import org.mockito.Mock;
 
 import java.util.List;
 
-import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.when;
 
 public class ListGategoryUseCaseTest extends UseCaseTest {
 
