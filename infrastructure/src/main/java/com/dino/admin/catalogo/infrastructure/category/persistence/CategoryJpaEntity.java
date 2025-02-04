@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
+import java.util.Objects;
 
 @Entity
 @Table(name = "category")
@@ -36,16 +37,16 @@ public class CategoryJpaEntity {
 
     public CategoryJpaEntity(){}
 
-    private CategoryJpaEntity(final String name,
-                              final String id,
+    private CategoryJpaEntity(final String id,
+                              final String name,
                               final String description,
                               final boolean active,
                               final Instant createdAt,
                               final Instant updatedAt,
                               final Instant deletedAt
     ) {
-        this.name = name;
         this.id = id;
+        this.name = name;
         this.description = description;
         this.active = active;
         this.createdAt = createdAt;
@@ -131,5 +132,17 @@ public class CategoryJpaEntity {
 
     public void setDeletedAt(Instant deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        CategoryJpaEntity that = (CategoryJpaEntity) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
