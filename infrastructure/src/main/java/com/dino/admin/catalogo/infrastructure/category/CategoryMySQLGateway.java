@@ -3,7 +3,7 @@ package com.dino.admin.catalogo.infrastructure.category;
 import com.dino.admin.catalogo.domain.category.Category;
 import com.dino.admin.catalogo.domain.category.CategoryGateway;
 import com.dino.admin.catalogo.domain.category.CategoryId;
-import com.dino.admin.catalogo.domain.category.CategorySearchQuery;
+import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
 import com.dino.admin.catalogo.infrastructure.category.persistence.CategoryJpaEntity;
 import com.dino.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
@@ -48,7 +48,7 @@ public class CategoryMySQLGateway implements CategoryGateway {
     }
 
     @Override
-    public Pagination<Category> findAll(final CategorySearchQuery aQuery) {
+    public Pagination<Category> findAll(final SearchQuery aQuery) {
         final var page = PageRequest.of(
                 aQuery.page(),
                 aQuery.perPage(),

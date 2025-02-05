@@ -12,7 +12,6 @@ import com.dino.admin.catalogo.application.category.update.UpdateCategoryRespons
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryUseCase;
 import com.dino.admin.catalogo.domain.category.Category;
 import com.dino.admin.catalogo.domain.category.CategoryId;
-import com.dino.admin.catalogo.domain.category.CategorySearchQuery;
 import com.dino.admin.catalogo.domain.exceptions.DomainException;
 import com.dino.admin.catalogo.domain.exceptions.NotFoundException;
 import com.dino.admin.catalogo.domain.pagination.Pagination;

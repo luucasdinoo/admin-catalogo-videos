@@ -9,7 +9,7 @@ import com.dino.admin.catalogo.application.category.retrieve.list.ListCategoryUs
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryRequest;
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryResponse;
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryUseCase;
-import com.dino.admin.catalogo.domain.category.CategorySearchQuery;
+import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
 import com.dino.admin.catalogo.domain.validation.handler.Notification;
 import com.dino.admin.catalogo.infrastructure.api.CategoryAPI;
@@ -70,7 +70,7 @@ public class CategoryController implements CategoryAPI {
             final String dir
     ) {
         return listCategoryUseCase
-                .execute(new CategorySearchQuery(page, perPage, search, sort, dir));
+                .execute(new SearchQuery(page, perPage, search, sort, dir));
     }
 
     @Override

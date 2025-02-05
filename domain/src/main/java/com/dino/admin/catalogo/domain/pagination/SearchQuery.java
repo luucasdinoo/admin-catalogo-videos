@@ -1,6 +1,6 @@
-package com.dino.admin.catalogo.domain.category;
+package com.dino.admin.catalogo.domain.pagination;
 
-public record CategorySearchQuery(
+public record SearchQuery(
         int page,
         int perPage,
         String terms,
