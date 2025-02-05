@@ -133,7 +133,6 @@ public class Genre extends AggregateRoot<GenreID> implements Cloneable{
     public Genre clone() {
         try {
             Genre clone = (Genre) super.clone();
-            // TODO: copy mutable state here, so the clone can't change the internals of the original
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
