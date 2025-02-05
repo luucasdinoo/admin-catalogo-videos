@@ -4,6 +4,7 @@ import com.dino.admin.catalogo.domain.category.Category;
 import com.dino.admin.catalogo.domain.category.CategoryGateway;
 import com.dino.admin.catalogo.domain.category.CategoryId;
 import com.dino.admin.catalogo.domain.exceptions.DomainException;
+import com.dino.admin.catalogo.domain.exceptions.NotFoundException;
 import com.dino.admin.catalogo.domain.validation.Error;
 import com.dino.admin.catalogo.domain.validation.handler.Notification;
 import io.vavr.API;
@@ -24,8 +25,7 @@ public class DefaultUpdateCategoryUseCase extends UpdateCategoryUseCase {
         final var anId = CategoryId.from(aRequest.id());
 
        final var aCategory = this.categoryGateway.findById(anId)
-                .orElseThrow(() -> DomainException.with(
-                        new Error("Category with ID %s was not found".formatted(anId.getValue()))));
+                .orElseThrow(() -> NotFoundException.with(Category.class, anId));
 
        final var notification = Notification.create();
        aCategory.update(aRequest.name(), aRequest.description(), aRequest.isActive()).validate(notification);

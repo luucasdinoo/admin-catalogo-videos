@@ -26,6 +26,7 @@ public class CategoryId extends Identifier {
         return new CategoryId(anId.toString().toLowerCase());
     }
 
+    @Override
     public String getValue() {
         return value;
     }
@@ -41,4 +42,5 @@ public class CategoryId extends Identifier {
     public int hashCode() {
         return Objects.hashCode(getValue());
     }
+
 }
