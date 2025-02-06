@@ -13,7 +13,7 @@ import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
 import com.dino.admin.catalogo.domain.validation.handler.Notification;
 import com.dino.admin.catalogo.infrastructure.api.CategoryAPI;
-import com.dino.admin.catalogo.infrastructure.category.models.CategoryApiOutput;
+import com.dino.admin.catalogo.infrastructure.category.models.CategoryListResponse;
 import com.dino.admin.catalogo.infrastructure.category.models.CreateCategoryApiInput;
 import com.dino.admin.catalogo.infrastructure.category.models.UpdateCategoryApiInput;
 import com.dino.admin.catalogo.infrastructure.category.presenters.CategoryApiPresenter;
@@ -74,7 +74,7 @@ public class CategoryController implements CategoryAPI {
     }
 
     @Override
-    public CategoryApiOutput getById(String id) {
+    public CategoryListResponse getById(String id) {
         return CategoryApiPresenter.present(this.getCategoryByIdUseCase.execute(id));
     }
 

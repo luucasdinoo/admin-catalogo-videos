@@ -6,7 +6,7 @@ import com.dino.admin.catalogo.application.category.create.CreateCategoryUseCase
 import com.dino.admin.catalogo.application.category.delete.DeleteCategoryUseCase;
 import com.dino.admin.catalogo.application.category.retrieve.get.CategoryResponse;
 import com.dino.admin.catalogo.application.category.retrieve.get.GetCategoryByIdUseCase;
-import com.dino.admin.catalogo.application.category.retrieve.list.CategoryListResponse;
+import com.dino.admin.catalogo.application.category.retrieve.list.CategoryListOutput;
 import com.dino.admin.catalogo.application.category.retrieve.list.ListCategoryUseCase;
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryResponse;
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryUseCase;
@@ -341,7 +341,7 @@ public class CategoryApiTest {
         final var expectedItemsCount = 1;
         final var expectedTotal = 1;
 
-        final var expectedItems = List.of(CategoryListResponse.from(aCategory));
+        final var expectedItems = List.of(CategoryListOutput.from(aCategory));
 
         when(listCategoryUseCase.execute(any()))
                 .thenReturn(new Pagination<>(expectedPage, expectedPerPage, expectedTotal, expectedItems));

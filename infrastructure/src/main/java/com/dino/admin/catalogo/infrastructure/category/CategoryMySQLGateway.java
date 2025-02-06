@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 import static com.dino.admin.catalogo.infrastructure.utils.SpecificationUtils.like;
 
@@ -73,9 +74,13 @@ public class CategoryMySQLGateway implements CategoryGateway {
     }
 
     @Override
-    public List<CategoryId> existsByIds(final Iterable<CategoryId> ids) {
-        // TODO: Implement this method in infrastructure module
-        return Collections.emptyList();
+    public List<CategoryId> existsByIds(final Iterable<CategoryId> categoryIds) {
+        final var ids = StreamSupport.stream(categoryIds.spliterator(), false)
+                .map(CategoryId::getValue)
+                .toList();
+        return this.repository.existsByIds(ids).stream()
+                .map(CategoryId::from)
+                .toList();
     }
 
     private Category save(final Category aCategory) {

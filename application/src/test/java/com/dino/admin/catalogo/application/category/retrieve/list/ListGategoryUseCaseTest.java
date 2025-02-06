@@ -47,7 +47,7 @@ public class ListGategoryUseCaseTest extends UseCaseTest {
         final var expectedPagination = new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories);
 
         final var expectedItemsCount = 2;
-        final var expectedResult = expectedPagination.map(CategoryListResponse::from);
+        final var expectedResult = expectedPagination.map(CategoryListOutput::from);
 
         when(categoryGateway.findAll(eq(aQuery)))
                 .thenReturn(expectedPagination);
@@ -77,7 +77,7 @@ public class ListGategoryUseCaseTest extends UseCaseTest {
         final var expectedPagination = new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories);
 
         final var expectedItemsCount = 0;
-        final var expectedResult = expectedPagination.map(CategoryListResponse::from);
+        final var expectedResult = expectedPagination.map(CategoryListOutput::from);
 
         when(categoryGateway.findAll(eq(aQuery)))
                 .thenReturn(expectedPagination);
