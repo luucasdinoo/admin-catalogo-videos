@@ -1,5 +1,6 @@
 package com.dino.admin.catalogo;
 
+import com.dino.admin.catalogo.infrastructure.castmember.persistence.CastMemberRepository;
 import com.dino.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import com.dino.admin.catalogo.infrastructure.genre.persistence.GenreRepository;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
@@ -18,6 +19,7 @@ public class MySQLCleanUpExtension implements BeforeEachCallback {
         final var appContext = SpringExtension.getApplicationContext(extensionContext);
 
         cleanUp(List.of(
+                appContext.getBean(CastMemberRepository.class),
                 appContext.getBean(GenreRepository.class),
                 appContext.getBean(CategoryRepository.class)
         ));

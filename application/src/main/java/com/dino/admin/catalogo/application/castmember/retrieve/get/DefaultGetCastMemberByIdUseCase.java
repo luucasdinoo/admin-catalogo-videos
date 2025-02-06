@@ -7,7 +7,7 @@ import com.dino.admin.catalogo.domain.exceptions.NotFoundException;
 
 import java.util.Objects;
 
-public final class DefaultGetCastMemberByIdUseCase extends GetCastMemberById{
+public final class DefaultGetCastMemberByIdUseCase extends GetCastMemberByIdUseCase {
 
     private final CastMemberGateway castMemberGateway;
 
