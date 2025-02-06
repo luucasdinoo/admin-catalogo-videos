@@ -6,6 +6,7 @@ import com.dino.admin.catalogo.domain.genre.GenreID;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -47,6 +48,7 @@ public class GenreJpaEntity {
         this.id = andId;
         this.name = aName;
         this.active = isActive;
+        this.categories = new HashSet<>();
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.deletedAt = deletedAt;
