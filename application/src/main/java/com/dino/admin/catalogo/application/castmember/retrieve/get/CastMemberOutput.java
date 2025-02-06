@@ -5,7 +5,7 @@ import com.dino.admin.catalogo.domain.castmember.CastMemberType;
 
 import java.time.Instant;
 
-public record GetCastMemberOutput(
+public record CastMemberOutput(
         String id,
         String name,
         CastMemberType type,
@@ -13,8 +13,8 @@ public record GetCastMemberOutput(
         Instant updatedAt
 ) {
 
-    public static GetCastMemberOutput from(final CastMember aMember){
-        return new GetCastMemberOutput(
+    public static CastMemberOutput from(final CastMember aMember){
+        return new CastMemberOutput(
                 aMember.getId().getValue(),
                 aMember.getName(),
                 aMember.getType(),

@@ -16,11 +16,11 @@ public final class DefaultGetCastMemberByIdUseCase extends GetCastMemberByIdUseC
     }
 
     @Override
-    public GetCastMemberOutput execute(String anIn) {
+    public CastMemberOutput execute(String anIn) {
         final var aMemberId = CastMemberID.from(anIn);
 
         return this.castMemberGateway.findById(aMemberId)
-                .map(GetCastMemberOutput::from)
+                .map(CastMemberOutput::from)
                 .orElseThrow(() -> NotFoundException.with(CastMember.class, aMemberId));
     }
 }
