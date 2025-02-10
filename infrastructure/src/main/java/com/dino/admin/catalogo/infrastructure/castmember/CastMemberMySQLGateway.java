@@ -3,6 +3,7 @@ package com.dino.admin.catalogo.infrastructure.castmember;
 import com.dino.admin.catalogo.domain.castmember.CastMember;
 import com.dino.admin.catalogo.domain.castmember.CastMemberGateway;
 import com.dino.admin.catalogo.domain.castmember.CastMemberID;
+import com.dino.admin.catalogo.domain.category.CategoryId;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
 import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.infrastructure.castmember.persistence.CastMemberJpaEntity;
@@ -13,7 +14,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Component
 public class CastMemberMySQLGateway implements CastMemberGateway {
@@ -68,6 +71,17 @@ public class CastMemberMySQLGateway implements CastMemberGateway {
     @Override
     public CastMember update(final CastMember aCastMember) {
         return save(aCastMember);
+    }
+
+    @Override
+    public List<CastMemberID> existsByIds(Iterable<CastMemberID> castMemberIDS) {
+        final var ids = StreamSupport.stream(castMemberIDS.spliterator(), false)
+                .map(CastMemberID::getValue)
+                .toList();
+
+        return this.castMemberRepository.existsByIds(ids).stream()
+                .map(CastMemberID::from)
+                .toList();
     }
 
     private CastMember save(final CastMember aCastMember) {
