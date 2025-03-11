@@ -1,6 +1,7 @@
 package com.dino.admin.catalogo.domain.video;
 
 import com.dino.admin.catalogo.domain.Identifier;
+import com.dino.admin.catalogo.domain.utils.IdUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -14,15 +15,11 @@ public class VideoID extends Identifier {
     }
 
     public static VideoID unique(){
-        return new VideoID(UUID.randomUUID().toString().toLowerCase());
+        return new VideoID(IdUtils.uuid());
     }
 
     public static VideoID from(final String anId) {
         return new VideoID(anId);
-    }
-
-    public static VideoID from(final UUID anId) {
-        return new VideoID(anId.toString().toLowerCase());
     }
 
     @Override

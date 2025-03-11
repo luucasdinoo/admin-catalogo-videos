@@ -1,29 +1,24 @@
 package com.dino.admin.catalogo.domain.category;
 
 import com.dino.admin.catalogo.domain.Identifier;
+import com.dino.admin.catalogo.domain.utils.IdUtils;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class CategoryId extends Identifier {
 
     private final String value;
 
     private CategoryId(final String value) {
-        Objects.requireNonNull(value);
-        this.value = value;
+        this.value = Objects.requireNonNull(value);;
     }
 
     public static CategoryId unique(){
-        return new CategoryId(UUID.randomUUID().toString().toLowerCase());
+        return new CategoryId(IdUtils.uuid());
     }
 
     public static CategoryId from(final String anId) {
         return new CategoryId(anId);
-    }
-
-    public static CategoryId from(final UUID anId) {
-        return new CategoryId(anId.toString().toLowerCase());
     }
 
     @Override
