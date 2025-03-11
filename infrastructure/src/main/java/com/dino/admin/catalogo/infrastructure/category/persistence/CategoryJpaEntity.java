@@ -11,19 +11,20 @@ import java.time.Instant;
 import java.util.Objects;
 
 @Entity(name = "Category")
-@Table(name = "category")
+@Table(name = "categories")
 public class CategoryJpaEntity {
 
     @Id
+    @Column(name = "id", nullable = false)
     private String id;
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(length = 4000)
+    @Column(name = "description", length = 4000)
     private String description;
 
-    @Column(nullable = false)
+    @Column(name = "active", nullable = false)
     private boolean active;
 
     @Column(name = "created_at", nullable = false, columnDefinition = "DATETIME(6)")
