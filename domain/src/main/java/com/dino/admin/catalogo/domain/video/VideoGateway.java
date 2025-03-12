@@ -14,5 +14,5 @@ public interface VideoGateway {
 
     Optional<Video> findById(VideoID anId);
 
-    Pagination<Video> findAll(VideoSearchQuery aQuery);
+    Pagination<VideoPreview> findAll(VideoSearchQuery aQuery);
 }

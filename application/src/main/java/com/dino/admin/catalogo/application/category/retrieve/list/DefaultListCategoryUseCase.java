@@ -1,8 +1,8 @@
 package com.dino.admin.catalogo.application.category.retrieve.list;
 
 import com.dino.admin.catalogo.domain.category.CategoryGateway;
-import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
+import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 
 import java.util.Objects;
 

@@ -30,7 +30,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import java.util.Objects;
 
-import static io.vavr.API.*;
+import static io.vavr.API.Left;
+import static io.vavr.API.Right;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;

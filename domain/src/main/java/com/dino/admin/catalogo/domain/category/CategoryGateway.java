@@ -1,7 +1,7 @@
 package com.dino.admin.catalogo.domain.category;
 
-import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
+import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 
 import java.util.List;
 import java.util.Optional;

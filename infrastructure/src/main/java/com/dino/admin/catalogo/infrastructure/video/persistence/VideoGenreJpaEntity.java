@@ -4,7 +4,6 @@ import com.dino.admin.catalogo.domain.genre.GenreID;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.UUID;
 
 @Entity(name = "VideoGenre")
 @Table(name = "videos_genres")

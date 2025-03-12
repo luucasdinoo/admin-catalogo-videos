@@ -9,8 +9,8 @@ import com.dino.admin.catalogo.application.category.retrieve.list.ListCategoryUs
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryRequest;
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryResponse;
 import com.dino.admin.catalogo.application.category.update.UpdateCategoryUseCase;
-import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
+import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.domain.validation.handler.Notification;
 import com.dino.admin.catalogo.infrastructure.api.CategoryAPI;
 import com.dino.admin.catalogo.infrastructure.category.models.CategoryListResponse;

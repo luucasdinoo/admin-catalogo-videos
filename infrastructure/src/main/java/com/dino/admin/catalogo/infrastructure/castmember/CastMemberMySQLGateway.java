@@ -3,7 +3,6 @@ package com.dino.admin.catalogo.infrastructure.castmember;
 import com.dino.admin.catalogo.domain.castmember.CastMember;
 import com.dino.admin.catalogo.domain.castmember.CastMemberGateway;
 import com.dino.admin.catalogo.domain.castmember.CastMemberID;
-import com.dino.admin.catalogo.domain.category.CategoryId;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
 import com.dino.admin.catalogo.domain.pagination.SearchQuery;
 import com.dino.admin.catalogo.infrastructure.castmember.persistence.CastMemberJpaEntity;

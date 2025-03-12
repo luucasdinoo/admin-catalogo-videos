@@ -4,7 +4,6 @@ import com.dino.admin.catalogo.domain.Identifier;
 import com.dino.admin.catalogo.domain.utils.IdUtils;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class VideoID extends Identifier {
 

@@ -1,6 +1,5 @@
 package com.dino.admin.catalogo.infrastructure.genre;
 
-import com.dino.admin.catalogo.domain.category.CategoryId;
 import com.dino.admin.catalogo.domain.genre.Genre;
 import com.dino.admin.catalogo.domain.genre.GenreGateway;
 import com.dino.admin.catalogo.domain.genre.GenreID;
