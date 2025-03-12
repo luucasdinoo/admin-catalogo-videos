@@ -1,6 +1,6 @@
 package com.dino.admin.catalogo.application.video.retrieve.list;
 
-import com.dino.admin.catalogo.domain.video.Video;
+import com.dino.admin.catalogo.domain.video.VideoPreview;
 
 import java.time.Instant;
 
@@ -12,13 +12,14 @@ public record VideoListOutput(
         Instant updatedAt
 ) {
 
-    public static VideoListOutput from(final Video aVideo){
+    //TODO -> Antes recebia Video mas dava erro.
+    public static VideoListOutput from(final VideoPreview aVideo){
         return new VideoListOutput(
-                aVideo.getId().getValue(),
-                aVideo.getTitle(),
-                aVideo.getDescription(),
-                aVideo.getCreatedAt(),
-                aVideo.getUpdatedAt()
+                aVideo.id(),
+                aVideo.title(),
+                aVideo.description(),
+                aVideo.createdAt(),
+                aVideo.updatedAt()
         );
     }
 }

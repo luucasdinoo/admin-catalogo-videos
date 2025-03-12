@@ -1,6 +1,6 @@
 package com.dino.admin.catalogo.application.video.update;
 
-import com.dino.admin.catalogo.domain.video.Resource;
+import com.dino.admin.catalogo.domain.resource.Resource;
 
 import java.util.Optional;
 import java.util.Set;

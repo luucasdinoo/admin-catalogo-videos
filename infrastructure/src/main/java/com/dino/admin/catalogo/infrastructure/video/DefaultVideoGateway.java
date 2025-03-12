@@ -77,6 +77,7 @@ public class DefaultVideoGateway implements VideoGateway {
         );
     }
 
+
     private Video save(Video aVideo) {
         return this.videoRepository.save(VideoJpaEntity.from(aVideo))
                 .toAggregate();

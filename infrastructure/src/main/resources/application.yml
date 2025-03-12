@@ -1,3 +1,22 @@
+google:
+  cloud:
+    credentials: ${GOOGLE_CLOUD_CREDENTIALS}
+    project-id: ${GOOGLE_CLOUD_PROJECT_ID}
+    storage:
+      catalogo-videos:
+        bucket: bucket_name
+        connect-timeout: 1000
+        read-timeout: 2000
+        retry-delay: 50
+        retry-max-attempts: 2
+        retry-max-delay: 50
+        retry-multiplier: 1.0
+
+logging:
+  level:
+    ROOT: INFO
+    com.dino.admin.catalogo: DEBUG
+
 spring:
   profiles:
     active: development
@@ -38,3 +57,8 @@ server:
       io: 4 # Um thread de E/S por núcleo de CPU é um padrão razoável: https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html#listeners-2
   error:
     path:
+
+storage:
+  catalogo-videos:
+    location-pattern: videoId-{videoId}
+    filename-patter: type-{type}

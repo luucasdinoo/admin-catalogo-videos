@@ -1,5 +1,6 @@
 package com.dino.admin.catalogo.infrastructure.video.persistence;
 
+import com.dino.admin.catalogo.domain.video.Video;
 import com.dino.admin.catalogo.domain.video.VideoPreview;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ public interface VideoRepository extends JpaRepository<VideoJpaEntity, String> {
                 v.title as title,
                 v.description as description,
                 v.createdAt as createdAt,
-                v.updatedAt as updatedAt,
+                v.updatedAt as updatedAt
             )
             from Video v
                 join v.castMembers members
@@ -41,4 +42,5 @@ public interface VideoRepository extends JpaRepository<VideoJpaEntity, String> {
             @Param("genres") Set<String> genres,
             Pageable page
     );
+
 }
