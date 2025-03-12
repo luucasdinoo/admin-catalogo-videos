@@ -5,7 +5,6 @@ import com.dino.admin.catalogo.infrastructure.services.StorageService;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
-import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
@@ -32,10 +31,9 @@ public class GoogleCloudStorageService implements StorageService {
     }
 
     @Override
-    //TODO blob.getContentEncoding()
     public Optional<Resource> get(final String name) {
         return Optional.ofNullable(this.storage.get(this.bucket, name))
-                .map(blob -> Resource.with(blob.getContentEncoding(), blob.getContent(), blob.getContentType(), name));
+                .map(blob -> Resource.with(blob.getContent(), blob.getCrc32cToHexString(), blob.getContentType(), name));
     }
 
     @Override

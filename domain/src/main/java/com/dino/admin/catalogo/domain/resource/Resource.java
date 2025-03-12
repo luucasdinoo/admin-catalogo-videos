@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public class Resource extends ValueObject {
 
-    private final String checksum;
     private final byte[] content;
+    private final String checksum;
     private final String contentType;
     private final String name;
 
     private Resource(
-            final String checksum,
             final byte[] content,
+            final String checksum,
             final String contentType,
             final String name
     ) {
@@ -24,12 +24,12 @@ public class Resource extends ValueObject {
     }
 
     public static Resource with(
-            final String checksum,
             final byte[] content,
+            final String checksum,
             final String contentType,
             final String name
     ){
-        return new Resource(checksum, content, contentType, name);
+        return new Resource(content, checksum , contentType, name);
     }
 
     public byte[] content() {
