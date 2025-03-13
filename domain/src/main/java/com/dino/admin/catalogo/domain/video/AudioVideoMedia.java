@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class AudioVideoMedia extends ValueObject {
 
+    private final String id;
     private final String checkSum;
     private final String name;
     private final String rawLocation;
@@ -13,12 +14,14 @@ public class AudioVideoMedia extends ValueObject {
     private final MediaStatus status;
 
     private AudioVideoMedia(
+            final String id,
             final String checkSum,
             final String name,
             final String rawLocation,
             final String encodedLocation,
             final MediaStatus status
     ) {
+        this.id = Objects.requireNonNull(id);
         this.checkSum = Objects.requireNonNull(checkSum);
         this.name = Objects.requireNonNull(name);
         this.rawLocation = Objects.requireNonNull(rawLocation);
@@ -27,14 +30,17 @@ public class AudioVideoMedia extends ValueObject {
     }
 
     public static AudioVideoMedia with(
+            final String id,
             final String checkSum,
             final String name,
             final String rawLocation,
             final String encodedLocation,
             final MediaStatus status
     ){
-        return new AudioVideoMedia(checkSum, name, rawLocation, encodedLocation, status);
+        return new AudioVideoMedia(id, checkSum, name, rawLocation, encodedLocation, status);
     }
+
+    public String id(){ return id; }
 
     public String checkSum() {
         return checkSum;
@@ -66,5 +72,27 @@ public class AudioVideoMedia extends ValueObject {
     @Override
     public int hashCode() {
         return Objects.hash(checkSum, rawLocation);
+    }
+
+    public AudioVideoMedia processing() {
+        return AudioVideoMedia.with(
+                id(),
+                checkSum(),
+                name(),
+                rawLocation(),
+                encodedLocation(),
+                MediaStatus.PROCESSING
+        );
+    }
+
+    public AudioVideoMedia completed(final String encodedPath) {
+        return AudioVideoMedia.with(
+                id(),
+                checkSum(),
+                name(),
+                rawLocation(),
+                encodedPath,
+                MediaStatus.COMPLETED
+        );
     }
 }
