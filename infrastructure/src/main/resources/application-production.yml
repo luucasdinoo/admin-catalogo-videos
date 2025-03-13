@@ -1,3 +1,9 @@
+amqp:
+  host: ${AQMP_RABBIT_HOST}
+  port: ${AQMP_RABBIT_PORT}
+  username: ${AQMP_RABBIT_USERNAME}
+  password: ${AQMP_RABBIT_PASSWORD}
+
 mysql:
   username: ${DATABASE_MYSQL_USERNAME:root}
   password: ${DATABASE_MYSQL_PASSWORD:123456}

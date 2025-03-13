@@ -42,7 +42,7 @@ public class AudioVideoMedia extends ValueObject {
 
     public String id(){ return id; }
 
-    public String checkSum() {
+    public String checksum() {
         return checkSum;
     }
 
@@ -77,7 +77,7 @@ public class AudioVideoMedia extends ValueObject {
     public AudioVideoMedia processing() {
         return AudioVideoMedia.with(
                 id(),
-                checkSum(),
+                checksum(),
                 name(),
                 rawLocation(),
                 encodedLocation(),
@@ -88,7 +88,7 @@ public class AudioVideoMedia extends ValueObject {
     public AudioVideoMedia completed(final String encodedPath) {
         return AudioVideoMedia.with(
                 id(),
-                checkSum(),
+                checksum(),
                 name(),
                 rawLocation(),
                 encodedPath,

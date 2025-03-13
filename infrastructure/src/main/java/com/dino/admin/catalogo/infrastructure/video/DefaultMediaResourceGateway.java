@@ -21,13 +21,13 @@ public class DefaultMediaResourceGateway implements MediaResourceGateway {
         this.storageService = storageService;
     }
 
-    //TODO -> dois ultimos parâmetros null
+    //TODO -> 3 parâmetros null
     @Override
     public AudioVideoMedia storeAudioVideo(final VideoID anId, final VideoResource videoResource) {
         final var filepath = filepath(anId, videoResource.type());
         final var aResource = videoResource.resource();
         store(filepath, aResource);
-        return AudioVideoMedia.with(aResource.checksum(), aResource.name(), filepath, null, null);
+        return AudioVideoMedia.with(null, aResource.checksum(), aResource.name(), filepath, null, null);
     }
 
     @Override

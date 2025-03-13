@@ -25,6 +25,6 @@ public class StorageConfig {
             final GoogleStorageProperties props,
             final Storage storage
             ) {
-        return new GoogleCloudStorageService(props.getBucket(), storage);
+        return new GoogleCloudStorageService(storage);
     }
 }

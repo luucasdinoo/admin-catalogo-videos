@@ -2,22 +2,27 @@ package com.dino.admin.catalogo.infrastructure.services.impl;
 
 import com.dino.admin.catalogo.domain.resource.Resource;
 import com.dino.admin.catalogo.infrastructure.services.StorageService;
+import com.google.api.client.util.Value;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Storage;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
 
+@Component
 public class GoogleCloudStorageService implements StorageService {
 
-    private final String bucket;
+    @Value("google.cloud.storage.catalogo-videos.bucket")
+    private String bucket;
+
     private final Storage storage;
 
-    public GoogleCloudStorageService(final String bucket, final Storage storage) {
-        this.bucket = bucket;
+    public GoogleCloudStorageService(final Storage storage) {
+
         this.storage = storage;
     }
 
