@@ -40,6 +40,10 @@ public class AudioVideoMedia extends ValueObject {
         return new AudioVideoMedia(id, checkSum, name, rawLocation, encodedLocation, status);
     }
 
+    public boolean isPendingEncode() {
+        return MediaStatus.PENDING == this.status;
+    }
+
     public String id(){ return id; }
 
     public String checksum() {
@@ -95,4 +99,5 @@ public class AudioVideoMedia extends ValueObject {
                 MediaStatus.COMPLETED
         );
     }
+
 }

@@ -3,6 +3,8 @@ package com.dino.admin.catalogo.infrastructure.video;
 import com.dino.admin.catalogo.domain.Identifier;
 import com.dino.admin.catalogo.domain.pagination.Pagination;
 import com.dino.admin.catalogo.domain.video.*;
+import com.dino.admin.catalogo.infrastructure.config.annotations.VideoCreatedQueue;
+import com.dino.admin.catalogo.infrastructure.services.EventService;
 import com.dino.admin.catalogo.infrastructure.video.persistence.VideoJpaEntity;
 import com.dino.admin.catalogo.infrastructure.video.persistence.VideoRepository;
 import org.springframework.data.domain.Page;
@@ -22,9 +24,13 @@ import static com.dino.admin.catalogo.infrastructure.utils.SqlUtils.*;
 public class DefaultVideoGateway implements VideoGateway {
 
     private final VideoRepository videoRepository;
+    private final EventService eventService;
 
-    public DefaultVideoGateway(final VideoRepository videoRepository) {
+    public DefaultVideoGateway(
+            final VideoRepository videoRepository,
+            @VideoCreatedQueue final EventService eventService) {
         this.videoRepository = Objects.requireNonNull(videoRepository);
+        this.eventService = Objects.requireNonNull(eventService);
     }
 
     @Override
@@ -79,7 +85,10 @@ public class DefaultVideoGateway implements VideoGateway {
 
 
     private Video save(Video aVideo) {
-        return this.videoRepository.save(VideoJpaEntity.from(aVideo))
+        final var result = this.videoRepository.save(VideoJpaEntity.from(aVideo))
                 .toAggregate();
+
+        aVideo.publishDomainEvent(this.eventService::send);
+        return result;
     }
 }
