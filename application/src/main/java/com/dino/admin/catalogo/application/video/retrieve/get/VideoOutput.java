@@ -23,7 +23,7 @@ public record VideoOutput(
         Rating rating,
         Set<String> categories,
         Set<String> genres,
-        Set<String> members,
+        Set<String> castMembers,
         ImageMedia banner,
         ImageMedia thumbnail,
         ImageMedia thumbnailHalf,
